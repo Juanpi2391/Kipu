@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'reac
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* Logo y título principal */}
+      {/* Logo */}
+      <Image source={require('./assets/Logo.png')} style={styles.logo} resizeMode="contain" />
+      
+      {/* Título principal */}
       <Text style={styles.mainTitle}>Khipu</Text>
       <Text style={styles.subtitle}>SOFTWARE CONTABLE PERUANO</Text>
 
@@ -61,6 +64,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    marginBottom: 10,
   },
   mainTitle: {
     fontSize: 48,
