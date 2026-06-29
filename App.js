@@ -1,54 +1,60 @@
+import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
 export default function App() {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleLogin = () => {
+    if (email.trim() === '' || password.trim() === '') {
+      alert('Por favor, completa todos los campos.');
+    } else {
+      alert('¡Inicio de sesión exitoso! Bienvenido a ContaFácil Perú.');
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {/* Logo */}
-      <Image source={require('./assets/Logo.png')} style={styles.logo} resizeMode="contain" />
-      
-      {/* Título principal */}
+      <Image source={require('./assets/Logo.png')} style={styles.logo} />
+
       <Text style={styles.mainTitle}>Khipu</Text>
       <Text style={styles.subtitle}>SOFTWARE CONTABLE PERUANO</Text>
 
-      {/* Línea decorativa dorada */}
       <View style={styles.divider} />
 
-      {/* Menú de opciones (estilo imagen) */}
       <View style={styles.menuContainer}>
         <Text style={styles.menuItem}>CONTABILIDAD</Text>
         <Text style={styles.menuItem}>ANALISIS</Text>
         <Text style={styles.menuItem}>TRIBUTACION</Text>
       </View>
 
-      {/* Línea decorativa dorada */}
       <View style={styles.divider} />
 
-      {/* Texto "EN LA NUBE" */}
       <Text style={styles.cloudText}>EN LA NUBE</Text>
 
-      {/* Separador */}
       <View style={styles.spacer} />
 
-      {/* Campos de inicio de sesión (versión oscura) */}
-      <TextInput 
+      <TextInput
         style={styles.input}
         placeholder="RUC o Correo electrónico"
         placeholderTextColor="#888"
+        value={email}
+        onChangeText={text => setEmail(text)}
       />
-      
-      <TextInput 
+
+      <TextInput
         style={styles.input}
         placeholder="Contraseña"
         placeholderTextColor="#888"
         secureTextEntry={true}
+        value={password}
+        onChangeText={text => setPassword(text)}
       />
 
-      {/* Botón de inicio de sesión */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>INICIAR SESIÓN</Text>
       </TouchableOpacity>
 
-      {/* Texto de registro */}
       <Text style={styles.footerText}>
         ¿Aún no tienes una cuenta? <Text style={styles.linkText}>Regístrate gratis</Text>
       </Text>
